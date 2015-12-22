@@ -13,3 +13,9 @@ class TestUserStories(unittest.TestCase):
         bike = self.station.release_bike()
         self.assertIsInstance(bike, Bike)
 
+    def test_docking_station_releases_working_bike(self):
+        # As a person,
+        # So that I can use a good bike,
+        # I'd like to see if a bike is working
+        bike = self.station.release_bike()
+        self.assertTrue(bike.isworking())
