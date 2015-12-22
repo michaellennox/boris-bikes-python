@@ -1,3 +1,4 @@
 class Bike():
 
-    pass
+    def isworking(self):
+        return True
