@@ -1,6 +1,6 @@
 #Boris Bikes
 
-This is a repeat of the boris-bikes challenge writting in Python instead of the original Ruby. [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md). You can find my original Ruby solution [at this repo](https://github.com/michaellennox/boris-bikes). The code in this repo should be treated as a WIP.
+This is a repeat of the [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md) written in Python instead of the original Ruby. You can find my original Ruby solution [at this repo](https://github.com/michaellennox/boris-bikes). 
 
 I have aimed to solve this challenge in a test driven manner with automated tests using the unittest library and the nose testrunner.
 
