@@ -22,6 +22,7 @@ class TestDockingStation(unittest.TestCase):
             self.station.release_bike()
 
     def test_station_raises_exception_when_trying_to_dock_more_bikes_than_capacity(self):
-        self.station.dock(self.bike)
+        for _ in range(self.station.DEFAULT_CAPACITY):
+            self.station.dock(self.bike)
         with self.assertRaisesRegexp(Exception, 'station full'):
             self.station.dock(self.bike)
