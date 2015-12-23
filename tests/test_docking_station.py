@@ -26,3 +26,12 @@ class TestDockingStation(unittest.TestCase):
             self.station.dock(self.bike)
         with self.assertRaisesRegexp(Exception, 'station full'):
             self.station.dock(self.bike)
+
+    def test_bikes_array_initializes_empty(self):
+        self.assertEqual(self.station.bikes, [])
+
+    def test_capacity_defaults_to_default_capacity(self):
+        self.assertEqual(self.station.capacity, self.station.DEFAULT_CAPACITY)
+        
+    def test_default_capacity_is_20(self):
+        self.assertEqual(self.station.DEFAULT_CAPACITY, 20)
