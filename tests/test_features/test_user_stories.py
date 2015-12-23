@@ -26,3 +26,10 @@ class TestUserStories(unittest.TestCase):
         # So I can return bikes I've hired
         # I want to dock my bike at the docking station
         self.station.dock(self.bike)
+
+    def test_docking_station_stores_a_docked_bike(self):
+        # As a member of the public
+        # So I can decide whether to use the docking station
+        # I want to see a bike that has been docked
+        self.station.dock(self.bike)
+        self.assertEqual(self.station.bikes, self.bike)
