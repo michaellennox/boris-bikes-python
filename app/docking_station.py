@@ -10,10 +10,10 @@ class DockingStation(object):
 
     DEFAULT_CAPACITY = 20 # A docking station's default capacity is 20 bikes
 
-    def __init__(self):
+    def __init__(self, capacity=DEFAULT_CAPACITY):
         """Initializes with no bikes in station, capacity is equal to DEFAULT_CAPACITY"""
         self.bikes = []
-        self.capacity = self.DEFAULT_CAPACITY
+        self.capacity = capacity
 
     def release_bike(self):
         """Returns a Bike, fails if station empty"""

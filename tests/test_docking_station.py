@@ -40,3 +40,7 @@ class TestDockingStation(unittest.TestCase):
         
     def test_default_capacity_is_20(self):
         self.assertEqual(self.station.DEFAULT_CAPACITY, 20)
+
+    def test_capacity_is_modifiable(self):
+        larger_station = DockingStation(50)
+        self.assertEqual(larger_station.capacity, 50)
