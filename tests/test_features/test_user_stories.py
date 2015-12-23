@@ -42,3 +42,11 @@ class TestUserStories(unittest.TestCase):
         # I'd like docking stations not to release bikes when there are none available.
         with self.assertRaisesRegexp(Exception, 'No bikes'):
             self.station.release_bike()
+
+    def test_docking_station_does_not_accept_more_bikes_than_capacity(self):
+        # As a maintainer of the system,
+        # So that I can control the distribution of bikes,
+        # I'd like docking stations not to accept more bikes than their capacity.
+        self.station.dock(Bike())
+        with self.assertRaisesRegexp(Exception, 'Docking station full'):
+            self.station.dock(self.bike)
