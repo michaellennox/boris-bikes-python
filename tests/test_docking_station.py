@@ -9,9 +9,14 @@ class TestDockingStation(unittest.TestCase):
         self.bike = Mock()
 
     def test_release_bike_releases_a_bike(self):
+        self.station.dock(self.bike)
         bike = self.station.release_bike()
         self.assertIsInstance(bike, Bike)
         
     def test_station_docks_and_stores_a_bike(self):
         self.station.dock(self.bike)
         self.assertEqual(self.station.bikes, self.bike)
+        
+    def test_station_raises_exception_when_trying_to_release_while_empty(self):
+        with self.assertRaisesRegexp(Exception, 'No bikes'):
+            self.station.release_bike()

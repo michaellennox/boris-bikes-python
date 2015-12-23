@@ -11,6 +11,7 @@ class TestUserStories(unittest.TestCase):
         # As a person,
         # So that I can use a bike,
         # I'd like a docking station to release a bike.
+        self.station.dock(self.bike)
         bike = self.station.release_bike()
         self.assertIsInstance(bike, Bike)
 
@@ -18,6 +19,7 @@ class TestUserStories(unittest.TestCase):
         # As a person,
         # So that I can use a good bike,
         # I'd like to see if a bike is working
+        self.station.dock(self.bike)
         bike = self.station.release_bike()
         self.assertTrue(bike.isworking())
 
