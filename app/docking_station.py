@@ -6,3 +6,7 @@ class DockingStation(object):
     def release_bike(self):
         """Returns a Bike"""
         return Bike()
+
+    def dock(self, bike):
+        """Docks a bike at the station"""
+        pass
