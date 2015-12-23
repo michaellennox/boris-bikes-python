@@ -11,8 +11,13 @@ class TestDockingStation(unittest.TestCase):
     def test_release_bike_releases_a_bike(self):
         self.station.dock(self.bike)
         bike = self.station.release_bike()
-        self.assertIsInstance(bike, Bike)
+        self.assertEqual(bike, self.bike)
         
+    def test_releasing_bike_removes_it_from_bikes(self):
+        self.station.dock(self.bike)
+        self.station.release_bike()
+        self.assertNotIn(self.bike, self.station.bikes)
+
     def test_station_docks_and_stores_a_bike(self):
         self.station.dock(self.bike)
         self.assertIn(self.bike, self.station.bikes)

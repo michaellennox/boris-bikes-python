@@ -19,7 +19,7 @@ class DockingStation(object):
         """Returns a Bike, fails if station empty"""
         if len(self.bikes) <= 0:
             raise Exception('No bikes available')
-        return Bike()
+        return self.bikes.pop()
 
     def dock(self, bike):
         """Docks a bike at the station, fails if station full"""
