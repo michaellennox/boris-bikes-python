@@ -7,19 +7,22 @@ class DockingStation(object):
         bikes: a container for Bike objects
     """
 
+    DEFAULT_CAPACITY = 20 # A docking station's default capacity is 20 bikes
+
     def __init__(self):
         """Initializes with no bikes in station"""
-        self.bikes = None
+        self.bikes = []
+        self.capacity = self.DEFAULT_CAPACITY
 
     def release_bike(self):
         """Returns a Bike, fails if station empty"""
-        if self.bikes == None:
+        if len(self.bikes) <= 0:
             raise Exception('No bikes available')
         return Bike()
 
     def dock(self, bike):
         """Docks a bike at the station, fails if station full"""
-        if self.bikes:
+        if len(self.bikes) >= self.capacity:
             raise Exception('Docking station full')
-        self.bikes = bike
+        self.bikes.append(bike)
 

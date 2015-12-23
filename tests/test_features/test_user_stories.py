@@ -34,7 +34,7 @@ class TestUserStories(unittest.TestCase):
         # So I can decide whether to use the docking station
         # I want to see a bike that has been docked
         self.station.dock(self.bike)
-        self.assertEqual(self.station.bikes, self.bike)
+        self.assertIn(self.bike, self.station.bikes)
 
     def test_docking_station_does_not_release_bike_when_empty(self):
         # As a member of the public,

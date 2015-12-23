@@ -15,7 +15,7 @@ class TestDockingStation(unittest.TestCase):
         
     def test_station_docks_and_stores_a_bike(self):
         self.station.dock(self.bike)
-        self.assertEqual(self.station.bikes, self.bike)
+        self.assertIn(self.bike, self.station.bikes)
         
     def test_station_raises_exception_when_trying_to_release_while_empty(self):
         with self.assertRaisesRegexp(Exception, 'No bikes'):
