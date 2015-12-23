@@ -9,4 +9,4 @@ class DockingStation(object):
 
     def dock(self, bike):
         """Docks a bike at the station"""
-        pass
+        self.bikes = bike
