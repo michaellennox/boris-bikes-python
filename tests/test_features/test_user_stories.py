@@ -99,8 +99,8 @@ class TestUserStories(unittest.TestCase):
         # I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
         self.station.dock(self.broken_bike)
         self.station.dock(self.bike)
-        self.van.remove_broken_bike(self.station)
-        self.garage.remove_broken_bike(self.van)
+        self.van.remove_bike(self.station, 'broken')
+        self.garage.remove_bike(self.van, 'broken')
         self.assertIn(self.broken_bike, self.garage.bikes)
         self.assertNotIn(self.bike, self.garage.bikes)
 
@@ -109,6 +109,6 @@ class TestUserStories(unittest.TestCase):
         # So that I can manage broken bikes and not disappoint users,
         # I'd like vans to collect working bikes from garages and distribute them to docking stations.
         self.garage.bikes.append(self.bike)
-        self.van.remove_working_bike(self.garage)
-        self.station.remove_working_bike(self.van)
+        self.van.remove_bike(self.garage, 'working')
+        self.station.remove_bike(self.van, 'working')
         self.assertIn(self.bike, self.station.bikes)

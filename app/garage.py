@@ -1,12 +1,5 @@
-class Garage(object):
+from bike_container import BikeContainer
 
-    def __init__(self):
-        self.bikes = []
-
-    def remove_broken_bike(self, van):
-        """Asks the van passed as argument for a broken bike"""
-        self.bikes.append(van.release_bike('broken'))
-
-    def release_bike(self, status='working'):
-        """Returns a working bike"""
-        return self.bikes.pop()
+class Garage(BikeContainer):
+    """A garage for storing bikes at, Child of BikeContainer class"""
+    pass
