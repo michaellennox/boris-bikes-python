@@ -1,6 +1,14 @@
 class Bike(object):
-    """A boris bike for use by the public"""
+    """A boris bike for use by the public
+    
+    Attributes:
+        isworking: True while working, False when broken
+    """
 
-    def isworking(self):
-        """Returns True if bike is working"""
-        return True
+    def __init__(self):
+        """Initializes working True"""
+        self.isworking = True
+
+    def report_broken(self):
+        """Changes value of isworking to False"""
+        self.isworking = False

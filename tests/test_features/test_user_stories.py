@@ -21,7 +21,7 @@ class TestUserStories(unittest.TestCase):
         # I'd like to see if a bike is working
         self.station.dock(self.bike)
         bike = self.station.release_bike()
-        self.assertTrue(bike.isworking())
+        self.assertTrue(bike.isworking)
 
     def test_docking_station_accepts_bike(self):
         # As a member of the public
@@ -70,4 +70,4 @@ class TestUserStories(unittest.TestCase):
         # So that I reduce the chance of getting a broken bike in future,
         # I'd like to report a bike as broken when I return it.
         self.bike.report_broken()
-        self.assertFalse(self.bike.isworking())
+        self.assertFalse(self.bike.isworking)
