@@ -6,6 +6,37 @@ I have aimed to solve this challenge in a test driven manner with automated test
 
 ##Installation Instructions
 
+Clone the repository then change directory into it.
+
+```
+$ git clone git@github.com:michaellennox/boris-bikes-python.git
+$ cd boris-bikes-python
+```
+
+Install and activate VirtualEnv
+
+```
+$ pip install virtualenv
+$ virtualenv venv
+$ source venv/bin/activate
+```
+
+Install required packages using pip and the requirements.txt file
+
+```
+$ pip install -r requirements.txt
+```
+
+Open the interpreter and import the application files
+
+```
+$ python
+>>> from app.bike import Bike
+>>> from app.docking_station import DockingStation
+>>> from app.garage import Garage
+>>> from app.van import Van
+```
+
 ##Usage Instructions
 
 ##Brief
