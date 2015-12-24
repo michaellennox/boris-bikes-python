@@ -103,3 +103,12 @@ class TestUserStories(unittest.TestCase):
         self.garage.remove_broken_bike(self.van)
         self.assertIn(self.broken_bike, self.garage.bikes)
         self.assertNotIn(self.bike, self.garage.bikes)
+
+    def test_van_takes_working_bikes_to_station(self):
+        # As a maintainer of the system,
+        # So that I can manage broken bikes and not disappoint users,
+        # I'd like vans to collect working bikes from garages and distribute them to docking stations.
+        self.garage.bikes.append(self.bike)
+        self.van.remove_working_bike(self.garage)
+        self.station.remove_working_bike(self.Van)
+        self.assertIn(self.bike, self.station.bikes)
