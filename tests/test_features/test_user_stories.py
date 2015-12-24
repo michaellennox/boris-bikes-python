@@ -6,6 +6,8 @@ class TestUserStories(unittest.TestCase):
     def setUp(self):
         self.station = DockingStation()
         self.bike = Bike()
+        self.broken_bike = Bike()
+        self.broken_bike.report_broken()
 
     def test_docking_station_releases_a_bike(self):
         # As a person,
@@ -71,3 +73,11 @@ class TestUserStories(unittest.TestCase):
         # I'd like to report a bike as broken when I return it.
         self.bike.report_broken()
         self.assertFalse(self.bike.isworking)
+
+    def test_docking_station_does_not_release_broken_bike(self):
+        # As a maintainer of the system,
+        # So that I can manage broken bikes and not disappoint users,
+        # I'd like docking stations not to release broken bikes.
+        self.station.dock(self.broken_bike)
+        with self.assertRaisesRegexp(Exception, 'No working bikes available'):
+            self.station.release_bike()
