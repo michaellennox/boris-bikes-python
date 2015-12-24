@@ -1,7 +1,6 @@
 import unittest
-from app.docking_station import DockingStation
 from mock import Mock
-from app.bike import Bike
+from app.docking_station import DockingStation
 
 class TestDockingStation(unittest.TestCase):
     def setUp(self):

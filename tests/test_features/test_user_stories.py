@@ -1,6 +1,8 @@
 import unittest
 from app.docking_station import DockingStation
 from app.bike import Bike
+from app.van import Van
+from app.garage import Garage
 
 class TestUserStories(unittest.TestCase):
     def setUp(self):
@@ -8,6 +10,8 @@ class TestUserStories(unittest.TestCase):
         self.bike = Bike()
         self.broken_bike = Bike()
         self.broken_bike.report_broken()
+        self.van = Van()
+        self.garage = Garage()
 
     def test_docking_station_releases_a_bike(self):
         # As a person,
@@ -88,3 +92,14 @@ class TestUserStories(unittest.TestCase):
         # I'd like docking stations to accept returning bikes (broken or not).
         self.station.dock(self.broken_bike)
         self.assertIn(self.broken_bike, self.station.bikes)
+
+    def test_van_takes_broken_bikes_to_garage(self):
+        # As a maintainer of the system,
+        # So that I can manage broken bikes and not disappoint users,
+        # I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+        self.station.dock(self.broken_bike)
+        self.station.dock(self.bike)
+        self.van.remove_broken_bikes(self.station)
+        self.van.offload_broken_bikes(self.garage)
+        self.assertIn(self.broken_bike, self.garage.bikes)
+        self.assertNotIn(self.bike, self.garage.bikes)

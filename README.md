@@ -1,12 +1,12 @@
 #Boris Bikes
 
-This is a repeat of the [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md) written in Python instead of the original Ruby. You can find my original Ruby solution [at this repo](https://github.com/michaellennox/boris-bikes). 
+This is a repeat of the [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md) written in Python instead of the original Ruby. You can find my original Ruby solution [at this repo](https://github.com/michaellennox/boris-bikes).
 
 I have aimed to solve this challenge in a test driven manner with automated tests using the unittest library and the nose testrunner.
 
 ##Installation Instructions
 
-##Useage Instructions
+##Usage Instructions
 
 ##Brief
 
@@ -68,6 +68,10 @@ I'd like docking stations to accept returning bikes (broken or not).
 As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
 I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like vans to collect working bikes from garages and distribute them to docking stations.
 ```
 
 ##Contributors

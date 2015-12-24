@@ -1,6 +1,6 @@
 class DockingStation(object):
     """A docking station for storing bikes at
-    
+
     Attributes:
         bikes: a container for Bike objects
         capacity: the number of bikes able to be held by the station
@@ -27,4 +27,3 @@ class DockingStation(object):
         if len(self.bikes) >= self.capacity:
             raise Exception('Docking station full')
         self.bikes.append(bike)
-

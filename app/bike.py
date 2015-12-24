@@ -1,6 +1,6 @@
 class Bike(object):
     """A boris bike for use by the public
-    
+
     Attributes:
         isworking: True while working, False when broken
     """
