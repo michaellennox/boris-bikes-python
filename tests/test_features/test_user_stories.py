@@ -64,3 +64,10 @@ class TestUserStories(unittest.TestCase):
         # I want to be able to specify a larger capacity when necessary.
         larger_station = DockingStation(50)
         self.assertEqual(larger_station.capacity, 50)
+
+    def test_reporting_bike_broken_registers_as_not_working(self):
+        # As a member of the public,
+        # So that I reduce the chance of getting a broken bike in future,
+        # I'd like to report a bike as broken when I return it.
+        self.bike.report_broken()
+        self.assertFalse(self.bike.isworking())

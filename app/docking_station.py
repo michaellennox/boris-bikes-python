@@ -1,5 +1,3 @@
-from bike import Bike
-
 class DockingStation(object):
     """A docking station for storing bikes at
     
