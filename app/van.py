@@ -16,3 +16,7 @@ class Van(object):
     def release_bike(self, status='broken'):
         """Returns a broken bike"""
         return self.bikes.pop()
+
+    def remove_working_bike(self, garage):
+        """Asks the garage passed as argument for a working bike"""
+        self.bikes.append(garage.release_bike('working'))

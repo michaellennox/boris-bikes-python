@@ -35,3 +35,7 @@ class DockingStation(object):
         if len(self.bikes) >= self.capacity:
             raise Exception('Docking station full')
         self.bikes.append(bike)
+
+    def remove_working_bike(self, van):
+        """Asks the van passed as argument for a working bike"""
+        self.bikes.append(van.release_bike('working'))

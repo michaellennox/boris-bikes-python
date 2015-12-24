@@ -110,5 +110,5 @@ class TestUserStories(unittest.TestCase):
         # I'd like vans to collect working bikes from garages and distribute them to docking stations.
         self.garage.bikes.append(self.bike)
         self.van.remove_working_bike(self.garage)
-        self.station.remove_working_bike(self.Van)
+        self.station.remove_working_bike(self.van)
         self.assertIn(self.bike, self.station.bikes)
