@@ -99,7 +99,7 @@ class TestUserStories(unittest.TestCase):
         # I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
         self.station.dock(self.broken_bike)
         self.station.dock(self.bike)
-        self.van.remove_broken_bikes(self.station)
-        self.van.offload_broken_bikes(self.garage)
+        self.van.remove_broken_bike(self.station)
+        self.garage.remove_broken_bike(self.van)
         self.assertIn(self.broken_bike, self.garage.bikes)
         self.assertNotIn(self.bike, self.garage.bikes)

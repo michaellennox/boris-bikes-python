@@ -12,7 +12,7 @@ class TestDockingStation(unittest.TestCase):
         self.station.dock(self.bike)
         bike = self.station.release_bike()
         self.assertEqual(bike, self.bike)
-        
+
     def test_releasing_bike_removes_it_from_bikes(self):
         self.station.dock(self.bike)
         self.station.release_bike()
@@ -21,7 +21,7 @@ class TestDockingStation(unittest.TestCase):
     def test_station_docks_and_stores_a_bike(self):
         self.station.dock(self.bike)
         self.assertIn(self.bike, self.station.bikes)
-        
+
     def test_station_raises_exception_when_trying_to_release_while_empty(self):
         with self.assertRaisesRegexp(Exception, 'No bikes'):
             self.station.release_bike()
@@ -37,7 +37,7 @@ class TestDockingStation(unittest.TestCase):
 
     def test_capacity_defaults_to_default_capacity(self):
         self.assertEqual(self.station.capacity, self.station.DEFAULT_CAPACITY)
-        
+
     def test_default_capacity_is_20(self):
         self.assertEqual(self.station.DEFAULT_CAPACITY, 20)
 
@@ -55,3 +55,14 @@ class TestDockingStation(unittest.TestCase):
         self.station.dock(self.broken_bike)
         bike = self.station.release_bike()
         self.assertEqual(bike, self.bike)
+
+    def test_docking_station_releases_broken_bike_if_told_to(self):
+        self.station.dock(self.bike)
+        self.station.dock(self.broken_bike)
+        bike = self.station.release_bike('broken')
+        self.assertEqual(bike, self.broken_bike)
+
+    def test_docking_station_raises_exception_when_told_release_broken_and_there_are_none(self):
+        self.station.dock(self.bike)
+        with self.assertRaisesRegexp(Exception, 'No broken bikes'):
+            self.station.release_bike('broken')

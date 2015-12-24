@@ -13,14 +13,22 @@ class DockingStation(object):
         self.bikes = []
         self.capacity = capacity
 
-    def release_bike(self):
-        """Returns a Bike, fails if station empty or if no working bikes"""
+    def release_bike(self, status='working'):
+        """If called with no additional argument, releases a working bike and fails if none available.
+
+        If called with an additional argument, releases a broken bike and fails if none available.
+        """
         if len(self.bikes) <= 0:
             raise Exception('No bikes available')
-        working_bike = next((x for x in self.bikes if x.isworking), None)
-        if not working_bike:
-            raise Exception('No working bikes available')
-        return self.bikes.pop(self.bikes.index(working_bike))
+        if status == 'working':
+            return_bike = next((x for x in self.bikes if x.isworking), None)
+            if not return_bike:
+                raise Exception('No working bikes available')
+        else:
+            return_bike = next((x for x in self.bikes if not x.isworking), None)
+            if not return_bike:
+                raise Exception('No broken bikes available')
+        return self.bikes.pop(self.bikes.index(return_bike))
 
     def dock(self, bike):
         """Docks a bike at the station, fails if station full"""
