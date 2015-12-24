@@ -1,0 +1,2 @@
+class Garage(object):
+    pass
