@@ -18,7 +18,7 @@ class TestUserStories(unittest.TestCase):
         # So that I can use a bike,
         # I'd like a docking station to release a bike.
         self.station.dock(self.bike)
-        bike = self.station.release_bike()
+        bike = self.station.release_bike('working')
         self.assertIsInstance(bike, Bike)
 
     def test_docking_station_releases_working_bike(self):
@@ -26,7 +26,7 @@ class TestUserStories(unittest.TestCase):
         # So that I can use a good bike,
         # I'd like to see if a bike is working
         self.station.dock(self.bike)
-        bike = self.station.release_bike()
+        bike = self.station.release_bike('working')
         self.assertTrue(bike.isworking)
 
     def test_docking_station_accepts_bike(self):
@@ -47,7 +47,7 @@ class TestUserStories(unittest.TestCase):
         # So that I am not confused and charged unnecessarily,
         # I'd like docking stations not to release bikes when there are none available.
         with self.assertRaisesRegexp(Exception, 'No bikes'):
-            self.station.release_bike()
+            self.station.release_bike('working')
 
     def test_docking_station_does_not_accept_more_bikes_than_capacity(self):
         # As a maintainer of the system,
@@ -84,7 +84,7 @@ class TestUserStories(unittest.TestCase):
         # I'd like docking stations not to release broken bikes.
         self.station.dock(self.broken_bike)
         with self.assertRaisesRegexp(Exception, 'No working bikes available'):
-            self.station.release_bike()
+            self.station.release_bike('working')
 
     def test_docking_station_accepts_broken_bikes(self):
         # As a maintainer of the system,
