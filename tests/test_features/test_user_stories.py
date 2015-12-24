@@ -81,3 +81,10 @@ class TestUserStories(unittest.TestCase):
         self.station.dock(self.broken_bike)
         with self.assertRaisesRegexp(Exception, 'No working bikes available'):
             self.station.release_bike()
+
+    def test_docking_station_accepts_broken_bikes(self):
+        # As a maintainer of the system,
+        # So that I can manage broken bikes and not disappoint users,
+        # I'd like docking stations to accept returning bikes (broken or not).
+        self.station.dock(self.broken_bike)
+        self.assertIn(self.broken_bike, self.station.bikes)
