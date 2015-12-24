@@ -6,7 +6,8 @@ from app.bike import Bike
 class TestDockingStation(unittest.TestCase):
     def setUp(self):
         self.station = DockingStation()
-        self.bike = Mock()
+        self.bike = Mock(isworking = True)
+        self.broken_bike = Mock(isworking = False)
 
     def test_release_bike_releases_a_bike(self):
         self.station.dock(self.bike)
@@ -44,3 +45,14 @@ class TestDockingStation(unittest.TestCase):
     def test_capacity_is_modifiable(self):
         larger_station = DockingStation(50)
         self.assertEqual(larger_station.capacity, 50)
+
+    def test_docking_station_does_not_release_broken_bike(self):
+        self.station.dock(self.broken_bike)
+        with self.assertRaisesRegexp(Exception, 'No working bikes'):
+            self.station.release_bike()
+
+    def test_docking_station_releases_working_bike_when_available(self):
+        self.station.dock(self.bike)
+        self.station.dock(self.broken_bike)
+        bike = self.station.release_bike()
+        self.assertEqual(bike, self.bike)
