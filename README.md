@@ -29,7 +29,7 @@ $ pip install -r requirements.txt
 
 Open the interpreter and import the application files
 
-```
+```python
 $ python
 >>> from app.bike import Bike
 >>> from app.docking_station import DockingStation
@@ -37,7 +37,62 @@ $ python
 >>> from app.van import Van
 ```
 
+Now you can use the boris bikes system.
+
 ##Usage Instructions
+
+As a member of the public you can dock and remove bikes from the docking station. You can also report your bike as broken.
+
+```python
+>>> station = DockingStation()
+>>> bike = Bike()
+
+# To report your bike as broken use .report_broken()
+>>> bike.report_broken()
+>>> bike.isworking
+False
+
+# To dock at station, use .dock() on the station and pass the bike as an argument,
+# you can then see bikes inside the station with .bikes
+# This will fail if the docking station is full
+>>> station.dock(bike)
+>>> station.bikes
+[<app.bike.Bike object at 0x103bd78d0>]
+
+# To remove a working bike from the station use release_bike() with an argument of 'working'
+# This will fail if there are no working bikes present at your docking station
+>>> station.release_bike('working')
+<app.bike.Bike object at 0x103bd7950>
+```
+
+As a system maintainer you can transport broken bikes from stations to garages to repair them. You can then repair them at the garage and transport them back to docking stations.
+
+```python
+>>> station = DockingStation()
+>>> bike = Bike()
+>>> van = Van()
+>>> garage = Garage()
+
+# To remove a broken bike from a station use .remove_bike from your van, passing the station and 'broken' as arguments
+# To remove the broken bike from the van do the same from the garage
+>>> van.remove_bike(station, 'broken')
+>>> van.bikes
+[<app.bike.Bike object at 0x103bd78d0>]
+>>> garage.remove_bike(station, 'broken')
+>>> garage.bikes
+[<app.bike.Bike object at 0x103bd78d0>]
+
+# To repair the bike use .repair_bike() passing the bike as an arguments
+>>> garage.repair_bike(bike)
+>>> bike.isworking
+True
+
+# You can then transport it back to the docking station in the same manner
+>>> van.remove_bike(garage, 'working')
+>>> station.remove_bike(van, 'working')
+>>> station.bikes
+[<app.bike.Bike object at 0x103bd78d0>]
+```
 
 ##Brief
 
