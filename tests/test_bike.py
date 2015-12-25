@@ -11,3 +11,8 @@ class TestBike(unittest.TestCase):
     def test_is_expected_to_not_be_working_after_reporting_broken(self):
         self.bike.report_broken()
         self.assertFalse(self.bike.isworking)
+
+    def test_fix_is_expected_to_fix_bike(self):
+        self.bike.report_broken()
+        self.bike.fix()
+        self.assertTrue(self.bike.isworking)

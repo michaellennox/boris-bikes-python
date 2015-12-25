@@ -12,3 +12,7 @@ class Bike(object):
     def report_broken(self):
         """Changes value of isworking to False"""
         self.isworking = False
+
+    def fix(self):
+        """Changes value of isworking to True"""
+        self.isworking = True
